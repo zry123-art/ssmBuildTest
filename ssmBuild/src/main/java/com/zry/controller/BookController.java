@@ -13,18 +13,17 @@ import com.zry.pojo.Books;
 import com.zry.service.BookService;
 
 @Controller
-@RequestMapping("/book")
+@RequestMapping("book")
 public class BookController {
-
 	@Autowired
-	@Qualifier("bookService")
+	@Qualifier("bookServiceImpl")
 	private BookService bookService;
 
 	@RequestMapping("/allBook")
 	public String list(Model model) {
 		List<Books> list = bookService.queryAllBook();
 		model.addAttribute("list", list);
-		return "allBook";
+		return "allbook";
 	}
 
 	@RequestMapping("/toAddBook")
@@ -39,8 +38,9 @@ public class BookController {
 		return "redirect:/book/allBook";
 	}
 
-	@RequestMapping("/toUpdateBook")
-	public String toUpdateBook(Model model, int id) {
+	@RequestMapping("/toUpdateBook/{bookId}")
+	public String toUpdateBook(@PathVariable("bookId") int id, Model model) {
+//        System.out.println(id);
 		Books books = bookService.queryBookById(id);
 		System.out.println(books);
 		model.addAttribute("book", books);

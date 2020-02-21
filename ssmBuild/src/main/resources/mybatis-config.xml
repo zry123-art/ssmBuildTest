@@ -3,7 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    
+
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+
     <typeAliases>
         <package name="com.zry.pojo"/>
     </typeAliases>
@@ -11,4 +16,4 @@
         <mapper resource="com/zry/dao/BookMapper.xml"/>
     </mappers>
 
-</configuration><?xml version="1.0" encoding="UTF-8"?>
+</configuration>

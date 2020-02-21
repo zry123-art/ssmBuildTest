@@ -10,11 +10,16 @@ import com.zry.dao.BookMapper;
 import com.zry.pojo.Books;
 import com.zry.service.BookService;
 
-@Service("bookService")
+@Service
 public class BookServiceImpl implements BookService {
+	// 调用dao层的操作，设置一个set接口，方便Spring管理
 	@Autowired
 	@Qualifier("bookMapper")
 	private BookMapper bookMapper;
+
+	public void setBookMapper(BookMapper bookMapper) {
+		this.bookMapper = bookMapper;
+	}
 
 	public int addBook(Books book) {
 		return bookMapper.addBook(book);
